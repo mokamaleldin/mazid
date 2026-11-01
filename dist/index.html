@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#122733">
+  <meta name="description" content="مساحة فريق مزيد لصناعة الصور المصغّرة: غيّر الصورة والعنوان، وحمّل تصميمك بهوية مزيد.">
+  <title>مساحة عمل مزيد — استوديو الصور</title>
+  <link rel="icon" href="assets/mazid-logo.png">
+  <link rel="preload" href="assets/shamel-bold.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <svg class="svg-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1.5"/><path d="m21 16-5-5-9 10M3 16l4-4 4 4"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V3m-5 5 5-5 5 5M4 16v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v13m-5-5 5 5 5-5M4 17v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 4.2 1.8c-1.2.9-1.7 1.2-1.7 2.7M12 17h.01"/></symbol>
+    <symbol id="i-move" viewBox="0 0 24 24"><path d="M12 3v18M3 12h18M9 6l3-3 3 3M9 18l3 3 3-3M6 9l-3 3 3 3M18 9l3 3-3 3"/></symbol>
+    <symbol id="i-reset" viewBox="0 0 24 24"><path d="M3 4v6h6M3.5 9a9 9 0 1 1-.1 6"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="i-expand" viewBox="0 0 24 24"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/></symbol>
+    <symbol id="i-team" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3m1-16a3 3 0 0 1 0 6m2 3a6 6 0 0 1 3 5v2"/></symbol>
+    <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h16M4 17h16"/><circle cx="9" cy="7" r="3"/><circle cx="15" cy="17" r="3"/></symbol>
+  </svg>
+
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="مساحة عمل مزيد، الرئيسية">
+      <span class="brand-mark"><img src="assets/mazid-logo.png" alt="مزيد" width="61" height="46"></span>
+      <span class="brand-name">مساحة عمل مزيد<span>MAZID WORKSPACE</span></span>
+    </a>
+    <div class="header-center"><span class="nav-current"><svg><use href="#i-image"/></svg> استوديو الصور</span><span class="nav-divider"></span><span class="team-label">لفريق العمل</span></div>
+    <button class="help-button" id="helpButton"><svg><use href="#i-help"/></svg><span>طريقة الاستخدام</span></button>
+  </header>
+
+  <main>
+    <div class="page-heading">
+      <div><div class="eyebrow"><span></span> أدوات الفريق / 01</div><h1>استوديو الصور المصغّرة<span>.</span></h1><p>صورة جديدة. عنوان جديد. نفس هوية مزيد.</p></div>
+      <div class="original-badge"><span class="badge-icon"><svg><use href="#i-check"/></svg></span><div>مبني على قالبك الأصلي<small>الخط والخامات والشعار من ملفك</small></div></div>
+    </div>
+
+    <div class="workspace">
+      <aside class="editor" aria-label="إعدادات الصورة المصغرة">
+        <div class="editor-top"><h2>جهّز صورتك</h2><span>تعديلان فقط</span></div>
+        <section class="control-section">
+          <div class="section-title"><span class="step">01</span><h3>الصورة</h3><span class="section-tag">ابدأ من هنا</span></div>
+          <input type="file" id="photoInput" accept="image/jpeg,image/png,image/webp,image/avif" hidden>
+          <button class="upload-zone" id="uploadZone" type="button">
+            <span class="upload-icon"><svg><use href="#i-upload"/></svg></span>
+            <strong id="uploadTitle">اسحب صورتك أو اختر ملفًا</strong>
+            <span id="uploadHint">JPG، PNG، WebP، AVIF · حتى 20 MB</span>
+          </button>
+          <div class="photo-file" id="photoFile"><img id="photoThumb" src="assets/default-photo.jpg" alt="الصورة المستخدمة"><div><strong id="photoName">الصورة الموجودة في القالب</strong><small id="photoDimensions">صورة تجريبية · يمكنك استبدالها</small></div><button id="replacePhoto" class="text-button">تغيير</button></div>
+          <details class="photo-adjust" id="photoAdjust">
+            <summary><span><svg><use href="#i-sliders"/></svg> ضبط موضع الصورة</span><svg class="details-arrow"><use href="#i-chevron"/></svg></summary>
+            <p>اسحب الصورة داخل المعاينة لتغيير موضعها.</p>
+            <div class="range-heading"><label for="zoom">التكبير</label><output id="zoomValue" for="zoom">100%</output></div>
+            <input type="range" id="zoom" min="100" max="220" value="100" step="1">
+            <div class="position-grid"><label for="positionX">أفقيًا<input type="range" id="positionX" min="-850" max="850" value="0" step="5"></label><label for="positionY">رأسيًا<input type="range" id="positionY" min="-600" max="600" value="0" step="5"></label></div>
+            <button id="resetCrop" class="text-button reset-crop"><svg><use href="#i-reset"/></svg>إعادة ضبط الموضع</button>
+          </details>
+        </section>
+
+        <section class="control-section title-section">
+          <div class="section-title"><span class="step">02</span><h3>العنوان</h3><span class="font-tag">FF Shamel</span></div>
+          <div class="segmented" role="group" aria-label="عدد سطور العنوان"><button type="button" id="oneLine" aria-pressed="false">سطر واحد <span class="line-glyph">━</span></button><button type="button" id="twoLines" class="active" aria-pressed="true">سطران <span class="line-glyph">☰</span></button></div>
+          <div class="field"><div class="field-heading"><label for="line1" id="line1Label">السطر الأول <span class="color-dot yellow"></span></label><span class="char-count" id="count1">6 / 48</span></div><input id="line1" type="text" value="النظام" maxlength="48" autocomplete="off" spellcheck="false" placeholder="اكتب عنوانك هنا" dir="auto"></div>
+          <div class="field" id="line2Field"><div class="field-heading"><label for="line2">السطر الثاني <span class="color-dot white"></span></label><span class="char-count" id="count2">14 / 48</span></div><input id="line2" type="text" value="فـى ورطــــــة" maxlength="48" autocomplete="off" spellcheck="false" placeholder="تكملة العنوان" dir="auto"></div>
+          <p class="field-note" id="fitNote"><svg><use href="#i-check"/></svg> حجم الخط يتكيّف تلقائيًا مع عنوانك.</p>
+        </section>
+        <div class="privacy-note"><svg><use href="#i-lock"/></svg>صورك تُعالج داخل متصفحك فقط.</div>
+      </aside>
+
+      <section class="preview-column" aria-label="معاينة التصميم وتنزيله">
+        <div class="preview-panel">
+          <div class="preview-top"><div class="preview-title"><span class="live-dot"></span><h2>المعاينة المباشرة</h2></div><div class="preview-actions"><span class="size-tag" dir="ltr">1920 × 1080</span><button class="icon-button" id="expandPreview" aria-label="تكبير المعاينة" title="تكبير المعاينة"><svg><use href="#i-expand"/></svg></button></div></div>
+          <div class="canvas-area" id="canvasArea"><canvas id="preview" width="1920" height="1080" role="img" aria-label="معاينة الصورة المصغرة، اسحب لتحريك الصورة" tabindex="0"></canvas><div class="loading-overlay" id="loadingOverlay"><span class="spinner"></span><span>نجهّز قالب مزيد…</span></div><div class="canvas-label">MAZID / THUMBNAIL</div></div>
+          <div class="preview-bottom"><span><svg><use href="#i-move"/></svg> اسحب الصورة لضبط موضعها</span><span class="saved-status" id="savedStatus" role="status"><svg><use href="#i-check"/></svg>جاهز للتعديل</span></div>
+        </div>
+        <div class="export-bar"><div class="export-copy"><span class="export-symbol"><svg><use href="#i-image"/></svg></span><div><h3>جاهزة للنشر؟</h3><p>حمّل الصورة بالدقة الكاملة، بدون علامة مائية إضافية.</p></div></div><div class="export-actions"><label class="format-select"><span class="sr-only">صيغة التحميل</span><select id="exportFormat"><option value="png">PNG</option><option value="jpeg">JPG</option></select></label><button class="download-button" id="downloadButton" disabled><svg><use href="#i-download"/></svg><span id="downloadLabel">تحميل الصورة</span></button></div></div>
+        <div class="workflow-strip"><div><span>01</span> ارفع الصورة</div><i></i><div><span>02</span> اكتب العنوان</div><i></i><div><span>03</span> حمّل وانشر <svg><use href="#i-check"/></svg></div></div>
+        <div class="draft-row"><span id="draftNote">مسودتك تُحفظ تلقائيًا على هذا المتصفح.</span><button id="resetButton" class="text-button"><svg><use href="#i-reset"/></svg>البدء من جديد</button></div>
+      </section>
+    </div>
+    <footer><span>مزيد<span class="footer-dot">.</span> مساحة تساعدك تنجز.</span><span>هوية واحدة. قصص كثيرة.</span></footer>
+  </main>
+
+  <dialog id="helpDialog" class="help-dialog"><button class="icon-button close-dialog" aria-label="إغلاق"><svg><use href="#i-close"/></svg></button><span class="dialog-kicker">أقل خطوات، نفس الهوية</span><h2>من الفكرة للصورة المصغّرة.</h2><ol><li><strong>اختَر صورة.</strong><p>ارفع صورة واضحة. اسحبها في المعاينة، أو افتح ضبط الموضع لتكبيرها وتحريكها.</p></li><li><strong>اكتب عنوانك.</strong><p>اختَر سطرًا أو سطرين. نضبط حجم الخط ومساحة الخامة تلقائيًا حسب النص.</p></li><li><strong>حمّل التصميم.</strong><p>اختَر PNG أو JPG. الملف النهائي بدقة 1920 × 1080، وبنفس المعاينة.</p></li></ol><div class="dialog-note">الخط والخامات والشعار مأخوذة من ملفك الأصلي. الحفظ تلقائي ومحلي على هذا المتصفح؛ هذه الأداة لا تشارك المسودات بين أعضاء الفريق.</div><button class="primary-small" id="gotIt">تمام، نبدأ</button></dialog>
+  <dialog id="resetDialog" class="reset-dialog"><h2>نبدأ بصورة جديدة؟</h2><p>سيُعاد العنوان والصورة إلى مثال القالب، وتُحذف المسودة الحالية من هذا المتصفح.</p><div class="dialog-actions"><button class="secondary-button" id="cancelReset">رجوع</button><button class="primary-small" id="confirmReset">ابدأ من جديد</button></div></dialog>
+  <dialog id="previewDialog" class="full-preview"><div class="full-preview-head"><span>معاينة الصورة المصغّرة</span><button class="icon-button close-dialog" aria-label="إغلاق المعاينة"><svg><use href="#i-close"/></svg></button></div><img id="largePreview" alt="المعاينة المكبرة للتصميم"></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
